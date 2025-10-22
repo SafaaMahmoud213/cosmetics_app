@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cosmetics_app/core/constant/costom_colors.dart';
 import 'package:cosmetics_app/core/utils/extention_sizedbox.dart';
 import 'package:cosmetics_app/core/utils/navigator.dart';
@@ -90,7 +91,27 @@ class _CostomPinPutState extends State<CostomPinPut> {
           CostomButton(
             onTap: () {
               if (form.currentState!.validate()) {
-                AppNavigator().push(page: SignInView());
+                AwesomeDialog(
+                  context: context,
+                  btnOkColor: CostomColors.secandryColor,
+
+                  animType: AnimType.scale,
+                  dialogType: DialogType.success,
+                  body: Center(
+                    child: Text(
+                      textAlign: TextAlign.center,
+
+                      "Congratulations! Your password has been \nsuccessfully created",
+                      style: TextStyle(fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                  title: 'Password Created!',
+                  btnOkOnPress: () {},
+                ).show();
+                Future.delayed(
+                  Duration(seconds: 4),
+                  () => AppNavigator().push(page: SignInView()),
+                );
               }
             },
             color: CostomColors.secandryColor,

@@ -1,12 +1,13 @@
 import 'package:cosmetics_app/core/constant/costom_colors.dart';
-import 'package:cosmetics_app/core/constant/costom_image.dart';
 import 'package:cosmetics_app/core/constant/costom_text_style.dart';
 import 'package:cosmetics_app/core/utils/extention_sizedbox.dart';
 import 'package:cosmetics_app/core/utils/navigator.dart';
-import 'package:cosmetics_app/core/wigdets/app_image.dart';
 import 'package:cosmetics_app/core/wigdets/costom_button.dart';
 import 'package:cosmetics_app/core/wigdets/costom_text_form_field.dart';
+import 'package:cosmetics_app/feature/auth/presentation/views/reset_password.dart';
 import 'package:cosmetics_app/feature/auth/presentation/views/signup_view.dart';
+import 'package:cosmetics_app/feature/auth/presentation/widgets/costom_signin_body.dart';
+import 'package:cosmetics_app/feature/auth/presentation/widgets/dont_or_have_account.dart';
 import 'package:flutter/material.dart';
 
 class SignInView extends StatefulWidget {
@@ -29,22 +30,14 @@ class _SignInViewState extends State<SignInView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                100.he,
-                AppImage(url: CostomImage.login, width: 280, height: 227),
-                20.he,
-                Text("Login Now", style: CostomTextStyle.text24bold),
-                10.he,
-                Text(
-                  "Please enter the details below to continue",
-                  style: CostomTextStyle.text13regular,
-                ),
-                20.he,
+                CostomSigninBody(),
                 CostomTextFormField(
                   labelText: "Phone Number",
+
                   keyboardType: TextInputType.numberWithOptions(),
                   validator: (val) {
                     if (val!.isEmpty) {
-                      return "Enter Current phone";
+                      return "The Field Should Not Be Impty";
                     } else if (val.length != 11) {
                       return "Phone number should be exactly 11 digits";
                     }
@@ -55,7 +48,7 @@ class _SignInViewState extends State<SignInView> {
                 CostomTextFormField(
                   validator: (val) {
                     if (val!.isEmpty) {
-                      return "Enter Current Password";
+                      return "The Field Should Not Be Impty";
                     }
                     return null;
                   },
@@ -66,11 +59,14 @@ class _SignInViewState extends State<SignInView> {
 
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "Forget Password?",
-                      style: CostomTextStyle.text14boldpink,
+                  child: GestureDetector(
+                    onTap: () => AppNavigator().push(page: ResetPassword()),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        "Forget Password?",
+                        style: CostomTextStyle.text14boldpink,
+                      ),
                     ),
                   ),
                 ),
@@ -83,22 +79,10 @@ class _SignInViewState extends State<SignInView> {
                   text: "Login",
                 ),
                 20.he,
-                GestureDetector(
+                DontOrHaveAccount(
+                  text1: "Don’t have an account?",
+                  text2: " Register",
                   onTap: () => AppNavigator().push(page: SignUpView()),
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Don’t have an account?",
-                          style: CostomTextStyle.text13regular,
-                        ),
-                        TextSpan(
-                          text: " Register",
-                          style: CostomTextStyle.text14boldpink,
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
                 20.he,
               ],
