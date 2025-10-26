@@ -27,4 +27,9 @@ abstract class CostomTextStyle {
     color: CostomColors.secandryColor,
     fontWeight: FontWeight.bold,
   );
+  static final TextStyle text28bold = TextStyle(
+    fontSize: 28,
+    color: CostomColors.primaryColor,
+    fontWeight: FontWeight.bold,
+  );
 }

@@ -1,6 +1,6 @@
 import 'package:cosmetics_app/core/constant/costom_colors.dart';
 import 'package:cosmetics_app/core/utils/navigator.dart';
-import 'package:cosmetics_app/feature/onboarding/presentation/view/onboarding_view.dart';
+import 'package:cosmetics_app/features/bottom_navigation/bottom_navigation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          navigatorKey: AppNavigator.navigatorKey,
+          navigatorKey: NavigateTo.navigatorKey,
           title: 'Cosmetic',
           theme: ThemeData(
             floatingActionButtonTheme: FloatingActionButtonThemeData(
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               seedColor: CostomColors.primaryColor,
             ),
           ),
-          home: OnboardingView(),
+          home: BottomNavigationView(),
         );
       },
     );
